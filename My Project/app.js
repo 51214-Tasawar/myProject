@@ -1,5 +1,7 @@
 const express = require("express")
 
+const studentroutes = require("./routes/Student")
+
 const app  = express() ;
 
 const port = 3001 ;
