@@ -8,7 +8,7 @@ module.exports ={
     } ,
     getallTeachers :(req , res)=>{
       try{
-      return res.send(console.log("Get All Teachers Tosee Total Staff"))
+      return res.send(console.log("Get All Teachers To see Total Staff"))
       }catch(error){
       return console.log(error.message)
       }
@@ -20,7 +20,7 @@ module.exports ={
       return console.log(error.message)
      }
     },
-    deleteTeacher:()=>{
+    deleteTeacher:(req , res)=>{
       try{
      return res.send(console.log("Teacher Record Deleted Successfully"))
       }catch(error){
