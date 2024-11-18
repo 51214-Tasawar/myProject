@@ -1,28 +1,47 @@
+const { response } = require("express")
+
+
 module.exports ={
     newTeacher:(req , res)=>{ 
        try{
-       return res.send(console.log("New Teacher Added Successfully"))
+       return res.send({
+        code : 200 ,
+        status : "New User Added" ,
+        response : req.body
+       })
        }catch(error){
          console.log(error.message)
        }
     } ,
     getallTeachers :(req , res)=>{
       try{
-      return res.send(console.log("Get All Teachers To see Total Staff"))
+      return res.send({
+        code : 200 ,
+        status : " Get New Teacher ", 
+        response : req.query
+      })
       }catch(error){
       return console.log(error.message)
       }
     } ,
     updateTeacher:(req ,res)=>{
      try{
-      return res.send(console.log(" Update Teacher Info and Courses Successfully "))
+      return res.send({
+        code : 200 ,
+        status : " Updated User ", 
+        response : req.body
+      })
      }catch(error){
       return console.log(error.message)
      }
     },
     deleteTeacher:(req , res)=>{
       try{
-     return res.send(console.log("Teacher Record Deleted Successfully"))
+     return res.send({
+      code : 200 ,
+      status : "User Deleted ", 
+      response : req.query
+    })
       }catch(error){
      return console.log(error.message)
       }
