@@ -1,6 +1,12 @@
+const { response } = require("express");
+
 const signUp = (req , res)=>{
   try{
-    return res.send(console.log("Click To Sign Up Admin"));
+    return res.send({
+        code : 200 ,
+        status : " New User Sign Up ",
+        re : req.body
+    })
   }catch(error){
      return console.log(error.message)
   }
@@ -9,14 +15,24 @@ const signUp = (req , res)=>{
 module.exports ={
     login:(req,res)=>{
       try{
-        return res.send(console.log(" Login Successfully "));
+        return res.send(
+            {
+                code : 200 ,
+                status : "Login New User",
+                response : req.query ,
+            }
+        );
       }catch(error){
         console.log(error.message);
       }
     },
     logout:(req , res)=>{
    try{
-  return res.send(console.log("Log out the Current User of admin"));
+  return res.send({
+    code : 200 ,
+    status : "User Logout " ,
+    response : req.query
+  });
    }catch(error){
     return console.log(error.message)
    }

@@ -1,21 +1,35 @@
+const { response } = require("express");
+
 const addStudent =(req , res )=>{
 try{
     console.log(req.body)
-return res.send(console.log("New Student Added Successfully"));
+return res.send({
+    code : 200 ,
+    status : "Added",
+    response : req.body
+});
 }catch(error){
  return console.log(error.message)
 }
 }
 const getStudent=(req ,res)=>{
 try{
-    return res.send(console.log("Get the new  Student Successfully"));
+    return res.send({
+        code : 200 ,
+        status : "Get True",
+        response :req.query
+    });
 }catch(error){
     return console.log(error.message)
 }
 }
 const updateStudent =(req ,res)=>{
    try{
-    return res.send(console.log("Update student Successfully"))
+    return res.send({
+        code : 200 ,
+        status : "Updated",
+        response : req.body
+    })
    }catch(error){
    return  console.log(error.message)
    }
@@ -23,7 +37,12 @@ const updateStudent =(req ,res)=>{
 const DeleteStudent =(req ,res)=>{
 try{
     console.log(req.query)
-    return res.send(console.log("New User Deleted Successfully"))
+    return res.send({
+        code : 200 ,
+        status: "Deleted",
+        response : req.query,
+        
+    } )
 }catch(error){
    return console.log(error.message)
 }
