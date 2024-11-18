@@ -9,7 +9,11 @@ return res.send({
     response : req.body
 });
 }catch(error){
- return console.log(error.message)
+    return res.send({
+        code : 400,
+        status : "Something Wrong" ,
+        error : error.message
+       })
 }
 }
 const getStudent=(req ,res)=>{
@@ -20,7 +24,11 @@ try{
         response :req.query
     });
 }catch(error){
-    return console.log(error.message)
+    return res.send({
+        code : 400,
+        status : "Something Wrong" ,
+        error : error.message
+       })
 }
 }
 const updateStudent =(req ,res)=>{
@@ -31,7 +39,11 @@ const updateStudent =(req ,res)=>{
         response : req.body
     })
    }catch(error){
-   return  console.log(error.message)
+    return res.send({
+        code : 400,
+        status : "Something Wrong" ,
+        error : error.message
+       })
    }
 }
 const DeleteStudent =(req ,res)=>{
@@ -44,7 +56,11 @@ try{
         
     } )
 }catch(error){
-   return console.log(error.message)
+    return res.send({
+        code : 400,
+        status : "Something Wrong" ,
+        error : error.message
+       })
 }
 }
 

@@ -8,7 +8,11 @@ const signUp = (req , res)=>{
         re : req.body
     })
   }catch(error){
-     return console.log(error.message)
+    return res.send({
+        code : 400,
+        status : "Something Wrong" ,
+        error : error.message
+       })
   }
 }
 
@@ -23,7 +27,11 @@ module.exports ={
             }
         );
       }catch(error){
-        console.log(error.message);
+        return res.send({
+            code : 400,
+            status : "Something Wrong" ,
+            error : error.message
+           })
       }
     },
     logout:(req , res)=>{
@@ -34,7 +42,11 @@ module.exports ={
     response : req.query
   });
    }catch(error){
-    return console.log(error.message)
+    return res.send({
+        code : 400,
+        status : "Something Wrong" ,
+        error : error.message
+       })
    }
     },
     signUp

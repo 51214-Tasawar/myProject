@@ -10,7 +10,11 @@ module.exports ={
         response : req.body
        })
        }catch(error){
-         console.log(error.message)
+         return res.send({
+          code : 400,
+          status : "Something Wrong" ,
+          error : error.message
+         })
        }
     } ,
     getallTeachers :(req , res)=>{
@@ -21,7 +25,11 @@ module.exports ={
         response : req.query
       })
       }catch(error){
-      return console.log(error.message)
+        return res.send({
+          code : 400,
+          status : "Something Wrong" ,
+          error : error.message
+         })
       }
     } ,
     updateTeacher:(req ,res)=>{
@@ -32,7 +40,11 @@ module.exports ={
         response : req.body
       })
      }catch(error){
-      return console.log(error.message)
+      return res.send({
+        code : 400,
+        status : "Something Wrong" ,
+        error : error.message
+       })
      }
     },
     deleteTeacher:(req , res)=>{
@@ -43,7 +55,11 @@ module.exports ={
       response : req.query
     })
       }catch(error){
-     return console.log(error.message)
+        return res.send({
+          code : 400,
+          status : "Something Wrong" ,
+          error : error.message
+         })
       }
     }
 }
