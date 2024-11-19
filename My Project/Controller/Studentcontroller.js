@@ -1,67 +1,32 @@
-const { response } = require("express");
+const {responseHandler} = require("../responseHandler")
+const errorHandler = require("../errorHandler")
 
 const addStudent =(req , res )=>{
 try{
-    console.log(req.body)
-return res.send({
-    code : 200 ,
-    status : "Added",
-    response : req.body
-});
+return responseHandler(res , req.body)
 }catch(error){
-    return res.send({
-        code : 400,
-        status : "Something Wrong" ,
-        error : error.message
-       })
+return errorHandler(res , error)
 }
 }
 const getStudent=(req ,res)=>{
 try{
-    return res.send({
-        code : 200 ,
-        status : "Get True",
-        response :req.query
-    });
+   return responseHandler(res , req.query)
 }catch(error){
-    return res.send({
-        code : 400,
-        status : "Something Wrong" ,
-        error : error.message
-       })
+    return errorHandler(res , error)
 }
 }
 const updateStudent =(req ,res)=>{
    try{
-    return res.send({
-        code : 200 ,
-        status : "Updated",
-        response : req.body
-    })
+    return responseHandler(res , req.body)
    }catch(error){
-    return res.send({
-        code : 400,
-        status : "Something Wrong" ,
-        error : error.message
-       })
+    return errorHandler(res , error)
    }
 }
 const DeleteStudent =(req ,res)=>{
 try{
-    console.log(req.query)
-    return res.send({
-        code : 200 ,
-        status: "Deleted",
-        response : req.query,
-        
-    } )
+    return responseHandler(res , req.query)
 }catch(error){
-    return res.send({
-        code : 400,
-        status : "Something Wrong" ,
-        error : error.message
-       })
+    return errorHandler(res , error)
 }
 }
-
 module.exports = {addStudent , getStudent , updateStudent , DeleteStudent}
