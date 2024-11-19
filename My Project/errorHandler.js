@@ -2,14 +2,12 @@ const errorHandler =(res , error)=>{
     try{
     return res.send({
         code : 400 ,
-        error : error.message
+        error : error
     })
-
     }catch(error){
    return {
     code : 400 ,
-    error : { }
-   }
-    }
+    error : {}
+   } }
 }
 module.exports = errorHandler
