@@ -28,3 +28,5 @@ TeacherTable.init(
         timestamps: true
     }
 )
+
+module.exports = TeacherTable ;
