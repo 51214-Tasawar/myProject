@@ -12,5 +12,21 @@ StudentTable.init(
             allowNull : false ,
             type : DataTypes.STRING
         },
-        
-    },{})
+        Studentemail : {
+            unique : true ,
+            allowNull : false,
+            type : DataTypes.STRING
+        },
+        password : {
+            allowNull : false ,
+            type : DataTypes.STRING
+        }
+    },
+    {
+        name : "StudentTable" ,
+        paranoid : true ,
+        timestamps : true
+    }
+)
+
+module.exports = StudentTable
