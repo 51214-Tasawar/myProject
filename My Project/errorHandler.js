@@ -5,9 +5,9 @@ const errorHandler =(res , error)=>{
         error : error
     })
     }catch(error){
-   return {
+   return res.send({
     code : 400 ,
     error : {}
-   } }
+   }) }
 }
 module.exports = errorHandler

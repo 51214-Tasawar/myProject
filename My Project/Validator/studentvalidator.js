@@ -3,7 +3,7 @@ const joi = require("joi")
 const CreateScheme = joi.object({
     name : joi.string().min(5).max(25),
     username :joi.string().min(5).max(50).required(),
-    password : joi.string().min(3).max(1000).required()
+    password : joi.string().min(5).max(1000).required()
 })
 const UpdateScheme = joi.object({
     name : joi.string().min(5).max(25),
@@ -13,28 +13,28 @@ const getDeleteScheme = joi.object({
     username : joi.string().min(5).max(50).required()
 })
 module.exports ={
-    Create :(req , res , next)=>{
+    Create :async(req , res , next)=>{
    try {
-    CreateScheme.validateAsync(req.body)
+   await CreateScheme.validateAsync(req.body)
     next()
    }catch(error){
    return res.send( {
-    error : error
+    error : error.message
    }) } } ,
-   Update:(req , res , next)=>{
+   Update:async(req , res , next)=>{
      try{
-        UpdateScheme.validateAsync(req.body)
+       await UpdateScheme.validateAsync(req.body)
         next()
      }catch(error){
      return res.send({
-        error: error
+        error: error.message
      })}}, 
-   getDelete :( req ,res , next)=>{
+   getDelete :async( req ,res , next)=>{
     try{
-       getDeleteScheme.validateAsync(req.query)
+       await getDeleteScheme.validateAsync(req.query)
        next()
     }catch(error){
     return res.send({
-        error : error
+        error : error.message
     }) }}
 }

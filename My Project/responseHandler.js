@@ -7,10 +7,10 @@ module.exports = {
     })
 
      }catch(error){
-     return{ 
+     return res.send({ 
         status : 400 ,
       response : error.message
-    }
+    })
      }
     }
 }
