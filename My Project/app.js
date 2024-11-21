@@ -5,6 +5,8 @@ const Morgan = require("morgan");
 const studentroutes = require("./routes/Student")
 const TeacherRout = require("./routes/Teacher") 
 const adminRout = require("./routes/Admin")
+const  newcon  =require("./Models/index")
+
 
 const app  = express() ;
 
@@ -26,6 +28,11 @@ app.use((req ,res)=>{
 })
 
 
+newcon.mycon.sync({alter:true , logging : false}).then(()=>{
+    console.log("My New Connection is Eastablished")
+}).catch(()=>{
+    console.log("Invalid Request Procced")
+})
 
 
 app.listen(port,()=>{

@@ -1,32 +1,31 @@
-const {DataTypes , Model} = require("sequelize")
+const { DataTypes , Model } = require("sequelize") ;
+ 
+const NewStudent = require("../../dbconnection")
 
-class StudentTable extends Model { }
+class Studens extends  Model { } ;
 
-StudentTable.init(
-    {
-        StudentId : {
-            primaryKey : true ,
-            type : DataTypes.STRING
-        },
-        StudentName : {
-            allowNull : false ,
-            type : DataTypes.STRING
-        },
-        Studentemail : {
-            unique : true ,
-            allowNull : false,
-            type : DataTypes.STRING
-        },
-        password : {
-            allowNull : false ,
-            type : DataTypes.STRING
-        }
+Studens.init({
+    StudentId : {
+        primaryKey : true ,
+        type : DataTypes.STRING 
     },
-    {
-        name : "StudentTable" ,
-        paranoid : true ,
-        timestamps : true
+    Studentname:{
+        allowNull : false ,
+        type : DataTypes.STRING
+    } ,
+    Studentemail :{
+        allowNull : false ,
+        type : DataTypes.STRING,
+    },
+    password :{
+        allowNull : false ,
+        type : DataTypes.STRING
     }
-)
+}, {
+    name : "Studens",
+    paranoid: true ,
+    timestamps : true ,
+     sequelize : NewStudent
+})
 
-module.exports = StudentTable
+module.exports = Studens

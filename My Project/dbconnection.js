@@ -1,12 +1,15 @@
-const { Sequelize } = require("sequelize")
+require("dotenv").config();
 
-const Studentdb = new Sequelize({
+const {Sequelize} = require("sequelize") ;
+
+const NewStudent = new Sequelize ({
    host : process.env.DBHOST ,
-   port : process.env.DBPORT ,
    username : process.env.DBUSERNAME ,
+   port : process.env.DBPORT ,
    database : process.env.DBNAME ,
    password : process.env.DBPASSWORD ,
-   dialect : process.env.dialect
+   dialect : process.env.DBDIALECT
 })
 
-module.exports = Studentdb 
+
+module.exports = NewStudent
