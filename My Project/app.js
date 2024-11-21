@@ -5,7 +5,7 @@ const Morgan = require("morgan");
 const studentroutes = require("./routes/Student")
 const TeacherRout = require("./routes/Teacher") 
 const adminRout = require("./routes/Admin")
-const  newcon  =require("./Models/index")
+const dbconnection = require("./Models/index")
 
 
 const app  = express() ;
@@ -28,10 +28,10 @@ app.use((req ,res)=>{
 })
 
 
-newcon.mycon.sync({alter:true , logging : false}).then(()=>{
-    console.log("My New Connection is Eastablished")
+dbconnection.Studentconnection.sync({ alter:true , logging : false}).then(()=>{
+    console.log("Connected To the DataBase")
 }).catch(()=>{
-    console.log("Invalid Request Procced")
+    console.log("Not Connected to the Data base")
 })
 
 

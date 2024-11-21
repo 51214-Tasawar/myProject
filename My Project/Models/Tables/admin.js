@@ -1,5 +1,5 @@
 const { DataTypes , Model } = require("sequelize")
-
+const connection = require("../../dbconnection")
 class adminTable extends Model { } ;
 
 adminTable.init( 
@@ -25,7 +25,8 @@ adminTable.init(
     {
           name :  "adminTable" ,
           paranoid : true ,
-          timestamps : true
+          timestamps : true ,
+          sequelize : connection
     })
 
     module.exports = adminTable ;

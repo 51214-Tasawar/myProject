@@ -1,11 +1,11 @@
-const NewStudent = require("../dbconnection");
-const Studens = require("./Tables/Student")
+const connection = require("../dbconnection");
+const Students = require("./Tables/Student")
 
-const mymodel = {Studens} ;
+const model = {Students} ;
 
-const newcon = { };
+const dbconnection = { };
 
-newcon.mycon = NewStudent ;
-NewStudent.newmodel = mymodel ;
+dbconnection.Studentconnection = connection ;
+connection.model = model ;
 
-module.exports = newcon
+module.exports = dbconnection
