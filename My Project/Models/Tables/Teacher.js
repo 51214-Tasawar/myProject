@@ -22,6 +22,7 @@ TeacherTable.init(
             type : DataTypes.STRING
         }
     } ,
+    
     {
         name : "TeacherTable",
         paranoid : true ,
