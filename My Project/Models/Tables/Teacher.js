@@ -1,4 +1,6 @@
 const {DataTypes , Model} = require("sequelize") 
+const { } = require("../../dbconnection");
+const connection = require("../../dbconnection");
 
 class TeacherTable extends Model { } ;
 
@@ -26,7 +28,8 @@ TeacherTable.init(
     {
         name : "TeacherTable",
         paranoid : true ,
-        timestamps: true
+        timestamps: true ,
+        sequelize : connection
     }
 )
 

@@ -1,8 +1,9 @@
 const connection = require("../dbconnection");
 const Students = require("./Tables/Student")
 const adminTable = require("./Tables/admin")
+const TeacherTable = require("./Tables/Teacher")
 
-const model = {Students ,adminTable } ;
+const model = {Students ,adminTable ,TeacherTable} ;
 
 const dbconnection = { };
 
