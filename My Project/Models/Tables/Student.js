@@ -2,6 +2,7 @@ const {DataTypes , Model} = require("sequelize");
 
 const connection = require("../../dbconnection");
 
+
 class Students extends Model { };
 
 Students.init(
@@ -24,5 +25,10 @@ Students.init(
             type : DataTypes.STRING(1000)
         }
     },{
-        name : "Students"
+        name : "Students" ,
+        timestamps : true ,
+        paranoid : true ,
+        sequelize : connection
     })
+
+    module.exports = Students ;
