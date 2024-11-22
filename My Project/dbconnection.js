@@ -4,10 +4,10 @@ const {Sequelize} = require("sequelize")
 
 const connection = new Sequelize({
 host : process.env.DBHOST ,
-password : process.env.DBPASSWORD ,
-database : process.env.DBNAME ,
-port : process.env.DBPORT ,
 username : process.env.DBUSERNAME ,
+database : process.env.DBNAME ,
+password : process.env.DBPASSWORD ,
+port : process.env.DBPORT ,
 dialect : process.env.DBDIALECT
 })
 

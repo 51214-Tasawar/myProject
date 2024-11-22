@@ -27,9 +27,9 @@ Students.init({
 } ,
 {
     name : "Students",
-    sequelize : connection,
     paranoid : true ,
-    timestamps : true 
+    timestamps : true,
+    sequelize : connection 
    
 }
 )
