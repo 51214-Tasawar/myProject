@@ -1,6 +1,6 @@
 const {responseHandler} = require("../responseHandler")
 const errorHandler = require("../errorHandler")
-const {CreateStudent} = require("../Models/StudentModel")
+const {CreateStudent , getStudents} = require("../Models/StudentModel")
 
 const {hash} = require("bcrypt")
 const {v4 : studentId} = require("uuid")
@@ -21,7 +21,11 @@ return errorHandler(res , error)
 }
 const getStudent=(req ,res)=>{
 try{
-   return responseHandler(res , req.query)
+  const response = getStudents(res , req.query)
+if(response.error){
+    return errorHandler(res , error)
+}
+ return responseHandler(res , req.query)
 }catch(error){
     return errorHandler(res , error)
 }
