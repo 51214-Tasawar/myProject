@@ -5,7 +5,7 @@ const Morgan = require("morgan");
 const studentroutes = require("./routes/Student")
 const TeacherRout = require("./routes/Teacher") 
 const adminRout = require("./routes/Admin")
-const dbconnection = require("./Models/index")
+const {dbconnection} = require("./Models/index")
 
 
 const app  = express() ;

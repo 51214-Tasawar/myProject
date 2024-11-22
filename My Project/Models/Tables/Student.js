@@ -5,17 +5,20 @@ const connection = require("../../dbconnection") ;
 class Students extends Model { } ;
 
 Students.init({
-    StudentId :{
+
+    studentId :{
      primaryKey : true ,
      type :DataTypes.STRING
     },
-    Studentname : {
+    studentname : {
         allowNull : false ,
+        unique : true ,
         type : DataTypes.STRING
     },
-    Studentemail : {
+    studentemail : {
+        unique : true ,
         allowNull :false ,
-        type : DataTypes.STRING
+        type : DataTypes.STRING,
     } ,
     password : {
         allowNull : false ,
@@ -24,9 +27,10 @@ Students.init({
 } ,
 {
     name : "Students",
+    sequelize : connection,
     paranoid : true ,
-    timestamps : true ,
-   sequelize : connection
+    timestamps : true 
+   
 }
 )
 

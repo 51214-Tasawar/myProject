@@ -1,13 +1,20 @@
-const {hash} = require("bcrypt")
-
 const {responseHandler} = require("../responseHandler")
 const errorHandler = require("../errorHandler")
+const {CreateStudent} = require("../Models/StudentModel")
 
+const {hash} = require("bcrypt")
+const {v4 : studentId} = require("uuid")
 
 const addStudent = async(req , res )=>{
 try{
- req.body.password = await hash (req.body.password , 10)
-return responseHandler(res , req.body)
+    req.body.studentId = studentId()
+    req.body.password = await hash (req.body.password , 10)
+     
+    const response = await CreateStudent(req.body)
+    if(response.error){
+        return errorHandler(res , response.error)
+    }
+    return responseHandler(res, response.response)
 }catch(error){
 return errorHandler(res , error)
 }

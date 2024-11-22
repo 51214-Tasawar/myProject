@@ -10,4 +10,4 @@ const dbconnection = { };
 dbconnection.Studentconnection = connection ;
 connection.model = model ;
 
-module.exports = dbconnection
+module.exports = {dbconnection , model}

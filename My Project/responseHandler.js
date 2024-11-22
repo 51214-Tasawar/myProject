@@ -1,9 +1,9 @@
 module.exports = {
-    responseHandler:(res, response)=>{
+    responseHandler:(res, data)=>{
      try {
     return res.send({
         status : 200 ,
-       response : response 
+       data : data 
     })
 
      }catch(error){
