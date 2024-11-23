@@ -29,12 +29,14 @@ const getStudents = async(studentname)=>{
 }
 const updatestudent =async({studentname , ...body})=>{
   try{
- const UpdateStudent = await model.Students.update({
+ const UpdateStudent = await model.Students.update(
+  {
+    ...body
+   } ,
+  {
   where :{
     studentname : studentname
   }
- },{
-  ...body
  })
  return {
   response : UpdateStudent 
@@ -45,5 +47,16 @@ const updatestudent =async({studentname , ...body})=>{
   }
   }
 }
-deleteStudent
-module.exports = { CreateStudent , getStudents , updatestudent } ;
+const deleteStudents=({studentname})=>{
+try{
+const studentuser = model.Students.destroy({where :{studentname:studentname}});
+return{
+  response : studentuser
+}
+}catch(error){
+ return {
+    error : error.errors[0].message
+}
+}
+}
+module.exports = { CreateStudent , getStudents , updatestudent ,deleteStudents } ;
