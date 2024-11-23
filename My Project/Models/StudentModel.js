@@ -21,7 +21,7 @@ const getStudents = async(studentname)=>{
   }
   }catch(error){
  return  {
-   error :error
+   error :error.message[0]
  }
   }
 }
