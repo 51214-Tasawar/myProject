@@ -1,5 +1,7 @@
 
+const { where } = require("sequelize");
 const {model} = require("./index") ;
+const { response } = require("express");
 
 const CreateStudent= async(body)=>{
    try {
@@ -9,21 +11,39 @@ return {
 }
    }catch(error){
    return {
-    error : error
+    error : error.errors[0].message
    }
    }
 }
 const getStudents = async(studentname)=>{
   try{
-  const getStudent = awaitmodel.Students.findAll({studentname})
+  const getStudentuser = await model.Students.findAll()
   return {
-    response : getStudent
+    response : getStudentuser
   }
   }catch(error){
  return  {
-   error :error.message[0]
+   error :error
  }
   }
 }
-
-module.exports = {CreateStudent , getStudents} ;
+const updatestudent =async({studentname , ...body})=>{
+  try{
+ const UpdateStudent = await model.Students.update({
+  where :{
+    studentname : studentname
+  }
+ },{
+  ...body
+ })
+ return {
+  response : UpdateStudent 
+ }
+}catch(error){
+  return {
+    error : error.errors[0].message
+  }
+  }
+}
+deleteStudent
+module.exports = { CreateStudent , getStudents , updatestudent } ;

@@ -11,7 +11,7 @@ const UpdateScheme = joi.object({
     studentusername : joi.string().min(5).max(50).required()
 })
 const getDeleteScheme = joi.object({
-    studentusername : joi.string().min(5).max(50).required()
+    studentname : joi.string().min(5).max(50).required()
 })
 module.exports ={
     Create :async(req , res , next)=>{
