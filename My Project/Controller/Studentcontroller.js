@@ -1,6 +1,6 @@
 const {responseHandler} = require("../responseHandler")
 const errorHandler = require("../errorHandler")
-const {CreateStudent , getStudents , updatestudent , deleteStudents} = require("../Models/StudentModel")
+const {CreateStudent , getallStudent , UpdateStudent , deleteStudents} = require("../Models/StudentModel")
 
 const {hash} = require("bcrypt")
 const {v4 : studentId} = require("uuid")
@@ -23,9 +23,9 @@ return errorHandler(res , error)
 }
 const getStudent=async(req ,res)=>{
 try{
-  const response = await getStudents()
+  const response = await getallStudent()
 if(response.error){
-    return errorHandler(res , error)
+    return errorHandler(res , response.error)
 }
  return responseHandler(res , response.response)
 }catch(error){
@@ -35,11 +35,11 @@ if(response.error){
 const updateStudent = async(req ,res)=>{
    try{
     req.body.password = await hash (req.body.password , 10)
-    const response = await updatestudent(req.body)
+    const response = await UpdateStudent(req.body)
     if(response.error){
-        return errorHandler(res , error)
+        return errorHandler(res , response.error)
     }
-    return responseHandler(res , req.body)
+    return responseHandler(res , response.response)
    }catch(error){
     return errorHandler(res , error)
    }
@@ -48,7 +48,7 @@ const DeleteStudent =(req ,res)=>{
 try{
     const response = deleteStudents(req.query);
     if(response.error){
-        return errorHandler(res , responseerror)
+        return errorHandler(res , response.error)
     }
     return responseHandler(res , response.response)
 }catch(error){
