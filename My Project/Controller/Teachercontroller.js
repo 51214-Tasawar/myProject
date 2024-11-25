@@ -1,65 +1,61 @@
-const {} = require("../responseHandler")
+const {responseHandler} = require("../responseHandler")
+const errorHandler = require("../errorHandler")
+const {
+  AddTeacher ,
+  UpdateTeachermodel ,
+  getallTeacher ,
+  DeleteTeacher
+} = require("../Models/TeacherModel")
 
+const {hash} = require("bcrypt")
+const {v4 : TeacherId } = require("uuid")
 
 module.exports ={
-    newTeacher:(req , res)=>{ 
+    newTeacher:async(req , res)=>{ 
        try{
-       return res.send({
-        code : 200 ,
-        status : "New User Added" ,
-        response : req.body
-       })
+        req.body.TeacherId = TeacherId()
+        req.body.password =  await hash (req.body.password , 5)
+        const response = await AddTeacher(req.body)
+        if(response.error){
+           return errorHandler(res , response.error)
+        }
+      return responseHandler(res,response.response)
        }catch(error){
-         return res.send({
-          code : 400,
-          status : "Something Wrong" ,
-          error : error.message
-         })
+  return errorHandler(res , error)
        }
     } ,
-    getallTeachers :(req , res)=>{
+    getallTeachers :async(req , res)=>{
       try{
-      return res.send({
-        code : 200 ,
-        status : " Get New Teacher ", 
-        response : req.query
-      })
+        const response =  await getallTeacher()
+        if( response.error){
+          return errorHandler(res,response.error)
+        }
+        return responseHandler(res ,response.response )
       }catch(error){
-        return res.send({
-          code : 400,
-          status : "Something Wrong" ,
-          error : error.message
-         })
+        return errorHandler(res , error)
       }
     } ,
-    updateTeacher:(req ,res)=>{
+    updateTeacher:async(req ,res)=>{
      try{
-      return res.send({
-        code : 200 ,
-        status : " Updated User ", 
-        response : req.body
-      })
+      req.body.password =  await hash (req.body.password , 5)
+      const response =  await UpdateTeachermodel(req.body)
+      if( response.error){
+        return errorHandler(res,response.error)
+      }
+      return responseHandler(res ,response.response )
      }catch(error){
-      return res.send({
-        code : 400,
-        status : "Something Wrong" ,
-        error : error.message
-       })
+      return errorHandler(res , error)
      }
     },
-    deleteTeacher:(req , res)=>{
+    deleteTeacher:async(req , res)=>{
       try{
-     return res.send({
-      code : 200 ,
-      status : "User Deleted ", 
-      response : req.query
-    })
+        const response =  await DeleteTeacher(req.query)
+        if( response.error){
+          return errorHandler(res,response.error)
+        }
+        return responseHandler(res ,response.response )
       }catch(error){
-        return res.send({
-          code : 400,
-          status : "Something Wrong" ,
-          error : error.message
-         })
+        return errorHandler(res , error)
       }
     }
 }

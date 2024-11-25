@@ -1,8 +1,4 @@
-const { response } = require("express")
 const {model} = require("../Models/index")
-const { DeleteStudent } = require("../Controller/Studentcontroller")
-const { where } = require("sequelize")
-
 
 module.exports ={
   CreateStudent:async(body)=>{
