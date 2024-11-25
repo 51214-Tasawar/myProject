@@ -1,53 +1,33 @@
-const { response } = require("express");
+const {responseHandler} = require("../responseHandler")
+const errorHandler = require("../errorHandler")
 
-const signUp = (req , res)=>{
+const {v4 : adminId} = require("uuid")
+const {hash} = require("bcrypt")
+
+const signUp = async(req , res)=>{
   try{
-    return res.send({
-        code : 200 ,
-        status : " New User Sign Up ",
-        re : req.body
-    })
+    req.body.password = await hash(req.body.password , 5)
+    req.body.adminId = adminId()
+return responseHandler(res , req.body)
   }catch(error){
-    return res.send({
-        code : 400,
-        status : "Something Wrong" ,
-        error : error.message
-       })
+   return errorHandler(res , error)
   }
 }
 
 module.exports ={
     login:(req,res)=>{
       try{
-        return res.send(
-            {
-                code : 200 ,
-                status : "Login New User",
-                response : req.query ,
-            }
-        );
+        return responseHandler(res , req.query)
       }catch(error){
-        return res.send({
-            code : 400,
-            status : "Something Wrong" ,
-            error : error.message
-           })
+        return errorHandler(res , error)
       }
     },
     logout:(req , res)=>{
    try{
-  return res.send({
-    code : 200 ,
-    status : "User Logout " ,
-    response : req.query
-  });
+    return responseHandler(res , req.query)
    }catch(error){
-    return res.send({
-        code : 400,
-        status : "Something Wrong" ,
-        error : error.message
-       })
-   }
-    },
+    return errorHandler(res , error)
+    }
+  },
     signUp
 }
