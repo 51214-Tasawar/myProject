@@ -21,7 +21,7 @@ module.exports ={
   })
    }
   } ,
-  log_in_out:async(req , res , nex)=>{
+  log_in_out:async(req , res , next)=>{
     try{
         await login_outScheme.validateAsync(req.query)
            next()
