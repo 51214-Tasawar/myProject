@@ -4,7 +4,8 @@ const {
   AddTeacher ,
   UpdateTeachermodel ,
   getallTeacher ,
-  DeleteTeacher
+  DeleteTeacher ,
+  get_oneTeacher
 } = require("../Models/TeacherModel")
 
 const {hash} = require("bcrypt")
@@ -24,13 +25,17 @@ module.exports ={
   return errorHandler(res , error)
        }
     } ,
-    getTeacher :(req , res)=>{
-      try{
-      return responseHandler (res , req.query)
-      }catch(error){
-       return res.send(errorHandler(res , error))
-      }
-    } ,
+    // getTeacher :(req , res)=>{
+    //   try{
+    //  const response = get_oneTeacher(req.query)
+    //  if(response.error){
+    //   return errorHandler(res , response.error)
+    //  }
+    //  return responseHandler(response.response)
+    //   }catch(error){
+    //    return res.send(errorHandler(res , error))
+    //   }
+    // } ,
     getallTeachers :async(req , res)=>{
       try{
         const response =  await getallTeacher()

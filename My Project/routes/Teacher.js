@@ -9,7 +9,7 @@ const {
     getTeacher } = require("../Controller/Teachercontroller") ;
 
     TeacherRout.get("/getTeachers" , getdelete ,getallTeachers);
-    TeacherRout.get("/getTeacher" , getdelete ,getTeacher );
+    TeacherRout.get("/getTeacher" , getTeacher );
     TeacherRout.post("/addnew" , newTeacheradd, newTeacher);
     TeacherRout.patch("/update" , Teacherupdate ,updateTeacher);
     TeacherRout.delete("/deleteTeacher" ,  getdelete ,deleteTeacher);
