@@ -71,7 +71,9 @@ module.exports ={
     response : response
   }
  }catch(error){
-
+   return {
+    error : error.errors[0].message
+   }
  }
   } 
 }

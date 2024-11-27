@@ -25,9 +25,9 @@ module.exports ={
   return errorHandler(res , error)
        }
     } ,
-    getTeacher :(req , res)=>{
+    getTeacher :async(req , res)=>{
       try{
-     const response = get_oneTeacher(req.query)
+     const response = await get_oneTeacher(req.query)
      if(response.error){
       return errorHandler(res , response.error)
      }
