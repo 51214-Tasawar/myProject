@@ -48,22 +48,22 @@ module.exports ={
              }
         }
     },
-    // get_oneTeacher :async({username})=>{
-    //    try{
-    //     const response = await model.TeacherTable.findOne({
-    //         where : {
-    //             username : username
-    //         }
-    //     }) 
-    //  return{
-    //     response : response
-    //  }
-    //    }catch(error){
-    //     return {
-    //   error : error
-    //     }
-    //    }
-    // },
+    get_oneTeacher :async({username})=>{
+       try{
+        const response = await model.TeacherTable.findOne({
+            where : {
+                username : username
+            }
+        }) 
+     return{
+        response : response
+     }
+       }catch(error){
+        return {
+      error : error
+        }
+       }
+    },
     DeleteTeacher :async({username})=>{
         try{
        const response = await model.TeacherTable.destroy({where:{username:username}})
