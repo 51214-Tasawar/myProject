@@ -24,6 +24,13 @@ module.exports ={
   return errorHandler(res , error)
        }
     } ,
+    getTeacher :(req , res)=>{
+      try{
+      return responseHandler (res , req.query)
+      }catch(error){
+       return res.send(errorHandler(res , error))
+      }
+    } ,
     getallTeachers :async(req , res)=>{
       try{
         const response =  await getallTeacher()
