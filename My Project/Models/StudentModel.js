@@ -13,9 +13,12 @@ module.exports ={
     }
      }
   },
-  getallStudent:async()=>{
+  getallStudent:async(query)=>{
     try{
- const getall  =await model.Students.findAll()
+ const getall  =await model.Students.findAll({
+  attributes :["studentname" , "studentemail" ]
+ })
+ 
  return {
   response : getall
  }
@@ -55,5 +58,20 @@ module.exports ={
       error : error 
     }
     }
+  } ,
+  get_one_student:async({studentname})=>{
+ try{
+  const response = await model.Students.findOne({
+    attributes : ["studentname" , "studentemail"] ,
+    where : {
+      studentname : studentname
+    }
+  })
+  return {
+    response : response
   }
+ }catch(error){
+
+ }
+  } 
 }
