@@ -25,17 +25,17 @@ module.exports ={
   return errorHandler(res , error)
        }
     } ,
-    getTeacher :async(req , res)=>{
-      try{
-     const response = await get_oneTeacher(req.query)
-     if(response.error){
-      return errorHandler(res , response.error)
-     }
-     return responseHandler(response.response)
-      }catch(error){
-       return res.send(errorHandler(res , error))
-      }
-    } ,
+    // getTeacher :async(req , res)=>{
+    //   try{
+    //  const response = await get_oneTeacher(req.query)
+    //  if(response.error){
+    //   return errorHandler(res , response.error)
+    //  }
+    //  return responseHandler(response.response)
+    //   }catch(error){
+    //    return res.send(errorHandler(res , error))
+    //   }
+    // } ,
     getallTeachers :async(req , res)=>{
       try{
         const response =  await getallTeacher()
